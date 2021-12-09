@@ -55,9 +55,4 @@ export default class RelatedDatatable extends LightningElement {
         this.flightDataWithoutDuplicate = JSON.parse(JSON.stringify(availableFlights));
         console.log(this.flightDataWithoutDuplicate);
     }
-
-    handleFlight(event) {
-        const boxes = this.template.querySelectorAll('lightning-input');
-        boxes.forEach(box => box.checked = event.target.name === box.name);
-    }
 }

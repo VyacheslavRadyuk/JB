@@ -4,7 +4,7 @@
                 <lightning-layout-item size="6" class="slds-p-around_x-small">         
                         <lightning-card  title="Trips">
                                 <template for:each={tripDataWithoutDuplicate} for:item="item">
-                                        <lightning-input name={item.tripName} key={item.tripName}
+                                        <lightning-input name={item.tripName} key={item.tripName} class="slds-m-left_medium"
                                         label={item.tripName} data-value={item.tripName} type="radio" onchange={handleTrip}></lightning-input>
                                 </template>
                         </lightning-card>
@@ -12,8 +12,7 @@
                 <lightning-layout-item size="6" class="slds-p-around_x-small">         
                         <lightning-card  title="Flights">
                                 <template for:each={flightDataWithoutDuplicate} for:item="item">
-                                        <lightning-input name={item.flightName} key={item.flightName}
-                                        label={item.flightName} data-value={item.flightName} type="radio" onchange={handleFlight}></lightning-input>
+                                        <p key={item.flightName} class="slds-m-left_medium"><lightning-formatted-text value={item.flightName} ></lightning-formatted-text></p>                         
                                 </template>  
                         </lightning-card>
                 </lightning-layout-item>
