@@ -1,0 +1,21 @@
+<template>
+        <c-input-lookup obj-name="Tourist__c" search-placeholder="Search Tourists" icon-name="standard:account" onlookupselected={handleAccountSelection}> </c-input-lookup>
+        <lightning-layout>  
+                <lightning-layout-item size="6" class="slds-p-around_x-small">         
+                        <lightning-card  title="Trips">
+                                <template for:each={tripDataWithoutDuplicate} for:item="item">
+                                        <lightning-input name={item.tripName} key={item.tripName}
+                                        label={item.tripName} data-value={item.tripName} type="radio" onchange={handleTrip}></lightning-input>
+                                </template>
+                        </lightning-card>
+                </lightning-layout-item>
+                <lightning-layout-item size="6" class="slds-p-around_x-small">         
+                        <lightning-card  title="Flights">
+                                <template for:each={flightDataWithoutDuplicate} for:item="item">
+                                        <lightning-input name={item.flightName} key={item.flightName}
+                                        label={item.flightName} data-value={item.flightName} type="radio" onchange={handleFlight}></lightning-input>
+                                </template>  
+                        </lightning-card>
+                </lightning-layout-item>
+        </lightning-layout>   
+</template>
