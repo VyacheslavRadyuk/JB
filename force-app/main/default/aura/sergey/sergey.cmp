@@ -16,7 +16,10 @@
                     <div class="slds-box">
                         <lightning:outputField fieldName="Id" />
                         <lightning:inputField fieldName="Name" /> 
-                    </div>       
+                        <div class="slds-p-horizontal--small">
+                            <lightning:button label="Delete Record" iconName="utility:recycle_bin_full" name="{!record.Id}" variant="destructive" onclick="{!c.handleDeleteRecord}"/>
+                        </div>
+                    </div>     
                 </lightning:recordEditForm>
             </aura:iteration>
         </aura:if>

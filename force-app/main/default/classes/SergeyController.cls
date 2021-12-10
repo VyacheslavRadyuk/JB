@@ -15,12 +15,16 @@ public class SergeyController {
 
     @AuraEnabled(cacheable = true)
     public static List<SObject> getObjectByName(String name){
-        system.debug(name);
         String query = 'Select Id, Name FROM ' + name;
-        system.debug(query);
         List<SObject> records = Database.query(query);
-        system.debug(records);
 
         return records;                         
+    }
+
+    @AuraEnabled
+    public static void deleteRecord(Id recordToDeleteId, String name){
+        String query = 'Select Id, Name FROM ' + name + ' Where Id = \'' + recordToDeleteId + '\'' + ' limit 1';
+        SObject recordToDelete = Database.query(query); 
+        delete recordToDelete;              
     }
 }
