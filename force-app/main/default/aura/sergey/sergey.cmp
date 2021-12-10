@@ -1,3 +1,24 @@
-<aura:component>
-    
-</aura:component>	
+<aura:component controller="SergeyController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="options" type="List" />
+    <aura:attribute name="selectedValue" type="String" />
+    <aura:attribute name="data" type="Sobject[]" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+
+    <lightning:card>
+        <lightning:select name="Objects" label="Select object:" aura:id="onjId" value="{!v.selectedValue}" onchange="{!c.selectObject}">
+            <aura:iteration items="{!v.options}" var="objectname">
+                <option value="{!objectname}" text="{!objectname}" />
+            </aura:iteration>
+        </lightning:select>
+        <aura:if isTrue="{!v.data.length > 0}">
+            <aura:iteration items="{!v.data}" var="record">
+                <lightning:recordEditForm recordId="{!record.Id}" objectApiName="{!v.selectedValue}">
+                    <div class="slds-box">
+                        <lightning:outputField fieldName="Id" />
+                        <lightning:inputField fieldName="Name" /> 
+                    </div>       
+                </lightning:recordEditForm>
+            </aura:iteration>
+        </aura:if>
+    </lightning:card>       
+</aura:component>
