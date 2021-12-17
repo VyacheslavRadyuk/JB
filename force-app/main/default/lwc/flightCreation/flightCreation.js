@@ -1,32 +1,18 @@
-import getTourist from '@salesforce/apex/FlightCreationController.getTourists';
 import getTrip from '@salesforce/apex/FlightCreationController.getTripsByCountryName';
 import getCountries from '@salesforce/apex/FlightCreationController.getCountries';
 import createFlightByTouristAndTripIds from '@salesforce/apex/FlightCreationController.createFlightByTouristAndTripIds';
-import { LightningElement, track, wire } from 'lwc';
+import { LightningElement, track, wire, api } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class FlightCreation extends LightningElement {
 
-    @track touristRecords = [];
+    @api touristRecords = [];
     @track tripRecords = [];
     @track countryRecords = [];
     selectedTripName;
     selectedTouristName;
     selectedCountryName;
     flightName;
-
-    @wire(getTourist)
-    wiredTouristRecords({ error, data }) {
-        if (data) {
-            this.error = undefined;
-            console.log(data);
-            this.touristRecords = JSON.parse(JSON.stringify(data));
-            console.log(this.touristRecords);
-        } else if (error) {
-            this.error = error;
-            this.touristRecords = undefined;
-        }
-    }
 
     @wire(getCountries)
     wiredCountryRecords({ error, data }) {

@@ -6,4 +6,11 @@
         <target>lightning__Tab</target>
         <target>lightning__FlowScreen</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <propertyType extends="SObject" name="T" label="Select SObject"/>
+            <property name="touristRecords" type='{T[]}' label="Tourist records" 
+                        description="Tourist records"/>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>

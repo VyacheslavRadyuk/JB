@@ -20,21 +20,17 @@ public with sharing class FlightCreationController {
 
         if (countryName == 'Belarus') {
             trips = [   SELECT Name 
-                        FROM Trip__c WHERE Name = 'Grodno' OR Name = 'Minsk'];
+                        FROM Trip__c 
+                        WHERE Name = 'Grodno' 
+                        OR Name = 'Minsk'];
         } else if (countryName == 'Russia') {
             trips = [   SELECT Name 
-                        FROM Trip__c WHERE Name = 'Moskow' OR Name = 'Smolensk'];
+                        FROM Trip__c 
+                        WHERE Name = 'Moskow' 
+                        OR Name = 'Smolensk'];
         }
 
         return trips;
-    }
-
-    @AuraEnabled(cacheable=true)
-    public static List<Tourist__c> getTourists() {
-        List<Tourist__c> tourists = [  SELECT Name 
-                                    FROM Tourist__c ];
-
-        return tourists;
     }
 
     @AuraEnabled
