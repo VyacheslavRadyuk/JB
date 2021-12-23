@@ -1,0 +1,18 @@
+<template>
+    <lightning-card>
+        <lightning-combobox
+            name="getObjectName"
+            label="SObject Name"
+            value={objectNames}
+            placeholder="Select object name"
+            options={options}
+            onchange={handleChangeSobject} >
+        </lightning-combobox>
+        
+        <template if:true={fieldNames}>
+            <template for:each={fieldNames} for:item="name">
+                <p key={name}>{name}</p>
+            </template>
+        </template>
+    </lightning-card>       
+</template>
