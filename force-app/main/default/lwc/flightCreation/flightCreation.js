@@ -83,7 +83,7 @@ export default class FlightCreation extends LightningElement {
         const event = new ShowToastEvent({
             title: 'Success!',
             message: 'The flight has been created',
-            type: 'success'
+            variant: 'success'
         });
         this.dispatchEvent(event);
     }
